@@ -23,7 +23,7 @@ class Product(models.Model):
     color = models.CharField(verbose_name=_('color'), max_length=10)
     price = models.CharField(verbose_name=_('price'), max_length=50, default='')
     seller = models.CharField(verbose_name=_('seller'), max_length=50)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(verbose_name=_('Created At'), auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name=_('Updated At'), auto_now=True)
