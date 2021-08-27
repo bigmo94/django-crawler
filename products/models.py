@@ -18,7 +18,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(verbose_name=_('name'), max_length=200)
     color = models.CharField(verbose_name=_('color'), max_length=10)
-    price = models.IntegerField(verbose_name=_('price'))
+    price = models.CharField(verbose_name=_('price'),max_length=50, default='')
     seller = models.CharField(verbose_name=_('seller'), max_length=50)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
