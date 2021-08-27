@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 class Category(models.Model):
     title = models.CharField(verbose_name=_('title'), max_length=50)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         db_table = 'category'
         verbose_name = _('category')
@@ -17,7 +20,10 @@ class Product(models.Model):
     color = models.CharField(verbose_name=_('color'), max_length=10)
     price = models.IntegerField(verbose_name=_('price'))
     seller = models.CharField(verbose_name=_('seller'), max_length=50)
-    category = models.ManyToManyField(Category)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         db_table = 'product'
