@@ -82,5 +82,6 @@ def crawl_product():
     return all_products_option
 
 
-if __name__ == '__main__':
-    print(crawl_product())
+
+
+
