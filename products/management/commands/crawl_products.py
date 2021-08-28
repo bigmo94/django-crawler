@@ -4,6 +4,8 @@ from products.management.commands import _crawler
 
 
 class Command(BaseCommand):
+    help = 'Save data of categories and products to db'
+
     def handle(self, *args, **kwargs):
         data = _crawler.crawl_product()
         for item in data:
