@@ -4,9 +4,13 @@ from bs4 import BeautifulSoup
 base_url = 'https://timcheh.com'
 
 
-def get_categories(url):
+def get_soup(url):
     response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
+    return BeautifulSoup(response.content, 'html.parser')
+
+
+def get_categories(url):
+    soup = get_soup(url)
     categories = soup.find_all('a', class_='nav_item_link')
     name_link = []
     for category in categories:
@@ -15,19 +19,13 @@ def get_categories(url):
 
 
 def get_product_link(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
+    soup = get_soup(url)
     product_html_tag = soup.select(
         '#__next > div.category_styles_main_body__O756o > div.container.clearfix > div.category_styles_content_page__3ew5u > div.row.category_styles_products_holder__2ZCFy > ul > li > a')
     products_link = []
     for tag in product_html_tag:
         products_link.append(base_url + tag.attrs['href'])
     return products_link
-
-
-def get_soup(url):
-    response = requests.get(url)
-    return BeautifulSoup(response.content, 'html.parser')
 
 
 def crawl_product_name(soup_page):
@@ -80,8 +78,3 @@ def crawl_product():
             all_products_option.append((category[0], name, price, color, seller))
 
     return all_products_option
-
-
-
-
-
