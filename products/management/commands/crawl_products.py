@@ -12,4 +12,5 @@ class Command(BaseCommand):
             category = Category.objects.get_or_create(title=item[0])
             if type(category) == tuple:
                 category = category[0]
-            Product.objects.create(category=category, name=item[1], price=int(item[2]), color=item[3], seller=item[4])
+            Product.objects.create(category=category, name=item[1], price=int(item[2].replace(',', '')), color=item[3],
+                                   seller=item[4])
