@@ -5,6 +5,7 @@
     <title>Products List</title>
 </head>
 <body>
+    <h1>Product list</h1>
     {% for product in products %}
         <li><a href="{% url 'products:product_detail' product.id %}" >{{product.name}}</a></li>
     {% endfor %}

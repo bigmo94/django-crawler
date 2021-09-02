@@ -15,7 +15,7 @@ def product_list(request, category_id):
     return render(request, 'products/product_list.html', context)
 
 
-def product_detail(requset, product_id):
+def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     context = {'product': product}
-    return render(requset, 'products/product_detail.html', context)
+    return render(request, 'products/product_detail.html', context)
