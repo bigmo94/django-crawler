@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+</head>
+<body>
+    {% for product in products %}
+        <li><a href="{% url 'products:product_detail' product.id %}" >{{product.name}}</a></li>
+    {% endfor %}
+</body>
+</html>
