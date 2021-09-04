@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Welcome Dear {{ profile.user }}</h1>
+    <img src="{{ profile.avatar.url }}" alt="User Avatar" height="100" width="100">
+    <p>name: {{ profile.user.first_name }}</p>
+    <p>last name: {{ profile.user.last_name }}</p>
+    <p>email: {{ profile.user.email }}</p>
+    <p>number: {{ profile.phone_number }}</p>
+    <p>age: {{ profile.age }}</p>
+
+    <a href="{% url 'users:logout' %}">Logout</a>
+</body>
+</html>
