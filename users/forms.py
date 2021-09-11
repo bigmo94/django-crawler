@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
@@ -14,3 +15,7 @@ class ProfileForm(forms.Form):
     email = forms.EmailField(required=False)
     bio = forms.CharField(required=False)
     avatar = forms.ImageField(required=False)
+
+
+class ConfigurationCodeForm(forms.Form):
+    code = forms.IntegerField()
