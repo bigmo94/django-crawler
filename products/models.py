@@ -25,7 +25,8 @@ class Product(models.Model):
     color = models.CharField(verbose_name=_('color'), max_length=10)
     price = models.IntegerField(verbose_name=_('price'), default='')
     seller = models.CharField(verbose_name=_('seller'), max_length=50)
-    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE,
+                                 related_name='product_list')
 
     created_time = models.DateTimeField(verbose_name=_('Created At'), auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name=_('Updated At'), auto_now=True)
