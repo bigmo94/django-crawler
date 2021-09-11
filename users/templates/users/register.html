@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<h1>Registration Page</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <p>there are errors in the form</p>
+    {% endif %}
+
+    {{ form }}
+    {{ form2 }}
+
+    <input type="submit" value="register">
+
+</form>
+</body>
+</html>
