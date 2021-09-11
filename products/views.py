@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from rest_framework import generics
 
+from .permission import IsUserAdminOrViewer
 from .serializer import CategorySerializer, ProductSerializer
 from .models import Category, Product
 
@@ -27,11 +28,13 @@ def product_detail(request, product_id):
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (IsUserAdminOrViewer,)
 
 
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = (IsUserAdminOrViewer,)
     lookup_field = 'id'
     lookup_url_kwarg = 'id'
 
