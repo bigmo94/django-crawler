@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
-    'users'
+    'users',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -85,8 +86,8 @@ LOCALE_PATHS = (
     BASE_DIR / 'locale',
 )
 
-# LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'fa'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'fa'
 
 TIME_ZONE = 'UTC'
 
