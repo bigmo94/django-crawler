@@ -69,7 +69,7 @@ def confirm_registration(request):
             profile = Profile.objects.create(user=user, phone_number=phone_number, age=age, avatar=avatar, bio=bio)
             profile.save()
             login(request, user)
-            return redirect('users:profile_detail')
+            return redirect(f'/account/profile-detail/{user.id}/')
 
 
 class LoginUser(generic.View):
