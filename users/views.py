@@ -115,5 +115,5 @@ class UserRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
     queryset = User.objects.all()
     permission_classes = (IsUserAdmin,)
     authentication_classes = (TokenAuthentication,)
-    lookup_field = 'id'
-    lookup_url_kwarg = 'id'
+    lookup_field = 'pk'
+    lookup_url_kwarg = 'pk'
