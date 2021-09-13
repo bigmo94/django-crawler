@@ -9,7 +9,7 @@ from .forms import LoginForm, ProfileForm, ConfigurationCodeForm
 from django.views import generic
 from .models import Profile
 from .permission import IsUserOwnerOrJustRead, IsUserAdmin
-from .serializer import UserSerializer
+from .serializer import UserSerializer, RegisterSerializer, ObtainTokenSerializer
 import random
 from django.core.cache import cache
 
@@ -103,6 +103,11 @@ class LogoutUser(generic.View):
         return render(request, 'users/logout.html')
 
 
+class UserLoginAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class UserListAPIView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
@@ -117,3 +122,13 @@ class UserRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
     authentication_classes = (TokenAuthentication,)
     lookup_field = 'pk'
     lookup_url_kwarg = 'pk'
+
+
+class UserRegisterAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+
+
+class UserConfirmAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = ObtainTokenSerializer
